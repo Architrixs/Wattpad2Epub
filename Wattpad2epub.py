@@ -46,7 +46,7 @@ name = res.json()['url']
 author = res.json()['author']
 
 #Using regex to get Name
-search_name = re.compile(r"[\w]+['][\w]+|\w+")#r"\w+['!?]\w+")
+search_name = re.compile(r"[\w]+['][\w]+|\w+")
 name= requests.utils.unquote(name)
 name = search_name.findall(name)
 story_name = string.capwords(' '.join(name[2:]))
