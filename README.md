@@ -8,7 +8,7 @@ Python Script to Scrape Wattpad Story and convert to Epub and html file.
 ### Libraries used : 
 1. Pyperclip
 2. Requests 
-3. BeautifulSoup 
+3. BeautifulSoup4 
 4. re
 5. Pypandoc
 6. String
