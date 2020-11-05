@@ -8,7 +8,7 @@
 HOW TO USE :
 1. Just copy the URL of any Chapter of the Wattpad Book. I repeat copy URL of any "Chapter"... you got it!
 2. Either Directly Run 
-		>>Wattpad2epub.py
+	>>Wattpad2epub.py
    or	>>Wattpad2epub.py Story_url
    
    Yes it can take 1 Commandline Argument as the copied url of the Chapter.
