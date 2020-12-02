@@ -3,7 +3,7 @@
 Python Script to Scrape Wattpad Story and convert to Epub and html file.
 ### This program will create:
 1. A html file of the entire Wattpad Book AND (You can directly Use this one to read, Images are preserved in this format.)
-2. A Epub file of the entire Wattpad Book.(The Epub will have separate marked Chapters instead of all chapters as one whole.)
+2. A Epub file of the entire Wattpad Book.(The Epub will have separate marked Chapters instead of all chapters as one whole. *Images included*.)
 
 ### Libraries used : 
 1. Pyperclip
