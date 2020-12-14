@@ -72,7 +72,6 @@ for i in range(len(chapters)):
 	
 	#Creating soup
 	soup_res = bs4.BeautifulSoup(story.text, 'html.parser')
-	contents = soup_res.find_all('p')
 	
 	#Adding Content of chapters to the file
 	file.write("<br><br><h2>Chapter "+str(i+1)+" : '"+ chapters[i]['TITLE'] +"'</h2><br><br>")
