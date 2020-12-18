@@ -25,4 +25,4 @@ Python Script to Scrape Wattpad Story and convert to Epub and html file.
 3. You got html and epub saved in the same location.
 
 ![Image of Wattpad2Epub](https://github.com/Architrixs/Wattpad2Epub/blob/main/Image_wattpad2Epub.png)
-### I found my script easy to use, but feel free to tell me my mistakes. I'm new to this.
+### I found my script easy to use, but feel free to point out mistakes. I'm new to this.
