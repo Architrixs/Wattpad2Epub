@@ -53,7 +53,7 @@ story_name = string.capwords(' '.join(name[2:]))
 
 
 #Opening/Creating HTML file
-file = open(story_name+".html", 'w')
+file = open(story_name+".html", 'w', encoding='utf-8')
 file.write("<html><head></head><body>")
 
 file.write("<br><h1>" + story_name +"</h1><br>BY  <h4>"+author+"</h4><br><b>Tags:</b> "+tags+"<br><br>"+summary+"<br>")
