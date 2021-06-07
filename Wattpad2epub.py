@@ -87,9 +87,6 @@ file.close()
 print("saved "+ story_name+".html")
 print("Generating Epub...")
 
-# cover_image = story_name+".jpg"
-# urllib.request.urlretrieve(cover, cover_image)
-
 res_img = requests.get(cover, headers={'User-Agent': 'Mozilla/5.0'})
 open(story_name+".jpg", 'wb').write(res_img.content)
 cover_image = story_name+".jpg"
