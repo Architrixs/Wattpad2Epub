@@ -15,7 +15,7 @@ HOW TO USE :
    Yes it can take 1 Commandline Argument as the copied url of the Chapter.
 3. You got html and epub saved in the same location.
 """
-import bs4, sys, requests, pyperclip, re, pypandoc, string, urllib.request
+import bs4, sys, requests, pyperclip, re, pypandoc, string, os
 
 if len(sys.argv) > 1:
 	#getting address from command line.
@@ -87,8 +87,12 @@ file.close()
 print("saved "+ story_name+".html")
 print("Generating Epub...")
 
+# cover_image = story_name+".jpg"
+# urllib.request.urlretrieve(cover, cover_image)
+
+res_img = requests.get(cover, headers={'User-Agent': 'Mozilla/5.0'})
+open(story_name+".jpg", 'wb').write(res_img.content)
 cover_image = story_name+".jpg"
-urllib.request.urlretrieve(cover, cover_image)
 
 xmlfile = open('details.xml', 'r')
 body = xmlfile.read()
@@ -99,8 +103,10 @@ xmlfile.write(body.format(title=story_name, author=author))
 xmlfile.close()
 
 #Using Pypandoc to convert html to epub
-output = pypandoc.convert_file(story_name+".html", 'epub3', outputfile=story_name+".epub", extra_args=['--epub-chapter-level=2', '--epub-metadata=details.xml', '--epub-cover-image={0}'.format(cover_image)])
+output = pypandoc.convert_file(story_name+".html", 'epub3', outputfile=story_name+".epub", extra_args=['--epub-chapter-level=2', '--epub-metadata=details.xml', f'--epub-cover-image={cover_image}'])
 assert output == ""
+
+os.remove(cover_image)
 
 xmlfile = open('details.xml', 'w')
 xmlfile.write("<dc:title>{title}</dc:title>\n<dc:creator>{author}</dc:creator>")
