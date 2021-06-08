@@ -55,7 +55,11 @@ story_name = string.capwords(' '.join(name[2:]))
 
 #Opening/Creating HTML file
 file = open(story_name+".html", 'w', encoding='utf-8')
-file.write("<html><head></head><body>")
+
+file.write(f"<html><head>\
+	<meta name='title' content='{story_name}'>\
+	<meta name='author' content='{author}'>\
+	</head><body>")
 
 file.write("<br><h1>" + story_name +"</h1><br>BY  <h4>"+author+"</h4><br><b>Tags:</b> "+tags+"<br><br>"+summary+"<br>")
 file.write("<br><br><div align='left'><h6>* If chapter number or names are Jumbled up, its definetely author's fault.(Author-san please Number them correctly and in order.)<br>* Converted using Wattpad2epub By Architrixs<br></h6></div>")
@@ -91,22 +95,10 @@ res_img = requests.get(cover, headers={'User-Agent': 'Mozilla/5.0'})
 open(story_name+".jpg", 'wb').write(res_img.content)
 cover_image = story_name+".jpg"
 
-xmlfile = open('details.xml', 'r')
-body = xmlfile.read()
-xmlfile.close()
-
-xmlfile = open('details.xml', 'w')
-xmlfile.write(body.format(title=story_name, author=author))
-xmlfile.close()
-
 #Using Pypandoc to convert html to epub
-output = pypandoc.convert_file(story_name+".html", 'epub3', outputfile=story_name+".epub", extra_args=['--epub-chapter-level=2', '--epub-metadata=details.xml', f'--epub-cover-image={cover_image}'])
+output = pypandoc.convert_file(story_name+".html", 'epub3', outputfile=story_name+".epub", extra_args=['--epub-chapter-level=2', f'--epub-cover-image={cover_image}'])
 assert output == ""
 
 os.remove(cover_image)
-
-xmlfile = open('details.xml', 'w')
-xmlfile.write("<dc:title>{title}</dc:title>\n<dc:creator>{author}</dc:creator>")
-xmlfile.close()
 
 print("saved "+ story_name+".epub")
