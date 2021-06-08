@@ -57,11 +57,16 @@ story_name = string.capwords(' '.join(name[2:]))
 file = open(story_name+".html", 'w', encoding='utf-8')
 
 file.write(f"<html><head>\
-	<meta name='title' content='{story_name}'>\
-	<meta name='author' content='{author}'>\
-	</head><body>")
+	        <meta name='title' content='{story_name}'>\
+	        <meta name='author' content='{author}'>\
+	        </head><body>")
 
-file.write("<br><h1>" + story_name +"</h1><br>BY  <h4>"+author+"</h4><br><b>Tags:</b> "+tags+"<br><br>"+summary+"<br>")
+# Adding separate cover image, so that it shows in HTML
+file.write("<div style=text-align:center;>\
+			<img src="+cover+" alt='cover_image'>\
+			</div>")
+			
+file.write("<br><b>Tags:</b> "+tags+"<br><br>"+summary+"<br>")
 file.write("<br><br><div align='left'><h6>* If chapter number or names are Jumbled up, its definetely author's fault.(Author-san please Number them correctly and in order.)<br>* Converted using Wattpad2epub By Architrixs<br></h6></div>")
 
 #Looping through each chapter
@@ -91,6 +96,7 @@ file.close()
 print("saved "+ story_name+".html")
 print("Generating Epub...")
 
+# downloading cover image
 res_img = requests.get(cover, headers={'User-Agent': 'Mozilla/5.0'})
 open(story_name+".jpg", 'wb').write(res_img.content)
 cover_image = story_name+".jpg"
