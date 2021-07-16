@@ -25,7 +25,7 @@ else:
 	address = pyperclip.paste()
 
 #Using regex to get ID
-search_id = re.compile(r'\d{9,}')
+search_id = re.compile(r'\d{8,}')
 id_no = search_id.search(address)
 
 #getting json data from Wattpad api
