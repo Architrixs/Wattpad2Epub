@@ -32,7 +32,7 @@ https://www.wattpad.com/api/v3/stories/{{story_id}}?drafts=0&mature=1&include_de
 
 def get_chapter_id(url):
     """Extracts the chapter ID from the given URL."""
-    search_id = re.compile(r'\d{8,}')
+    search_id = re.compile(r'\d{5,}')
     id_match = search_id.search(url)
     if id_match:
         return id_match.group()
